@@ -70,7 +70,7 @@ def plot_3d_rot_vel_fail_vel(df):
     fig.show()
 
 def evolution_over_time():
-    df = pd.read_csv('logs/snapshot1/snapshot.csv')
+    df = pd.read_csv('logs/play0/snapshot.csv')
 
     all_species_labels = []
 

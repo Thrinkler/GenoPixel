@@ -119,7 +119,7 @@ class Robot(pygame.sprite.Sprite):
         #pygame.draw.line(surface,pygame.color.Color(0,0,0),(x1,y1),(x2,y2))
 
         #pygame.draw.circle(surface, self.color, (self.rect.x+self.rect.width//2 - camera_offset[0],self.rect.y+self.rect.width//2 - camera_offset[1]), self.vision//2, width=0)
-        pygame.draw.rect(surface, pygame.color.Color(255,255,255), self.rect.move(-camera_offset[0], -camera_offset[1]), width=0)
+        pygame.draw.rect(surface, self.color, self.rect.move(-camera_offset[0], -camera_offset[1]), width=0)
         
         
 
@@ -173,7 +173,7 @@ class Robot(pygame.sprite.Sprite):
             dist_vector = self.vector_to_food(self.target_food)
             distance_sq = dist_vector[0]**2 + dist_vector[1]**2
         aggressiveness = 1.0 - (distance_sq / (self.vision**2 + 1e-6))
-        g = max(0, min(1, aggressiveness))
+        g = max(0, min(100/ROBOTS_SIZE, aggressiveness))*1
         self.change_angle(move_angle*0.05 * self.rot_vel*g *0.6)
 
         return move_angle

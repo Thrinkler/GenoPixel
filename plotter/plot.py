@@ -7,7 +7,7 @@ import numpy as np
 import pandas as pd
 
 
-msft = pd.read_csv('logs/73.csv')
+msft = pd.read_csv('logs/play2/mean.csv')
 time = range(len(msft))
 
 def time_plot():

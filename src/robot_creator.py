@@ -10,7 +10,7 @@ from .settings import *
 
 class Creator:
     def __init__(self, numRobots, numFoods):
-        self.file = create_files.new_file()
+        self.file,self.snapshot = create_files.new_file()
 
         self.F = [food.Food(random.randint(0,SCREEN_WIDTH),random.randint(0,SCREEN_HEIGHT),pygame.Color(0,255,0)) for _ in range(numFoods)]
         self.dic_F = food_sorter.FoodSorter(self.F)
@@ -94,16 +94,13 @@ class Creator:
                 self.P.pop(self.P.index(p))
         
 
-    def draw(self,surface, camera_offset=[0,0,False]):
-        r = []
+    def draw(self,surface, time = 0,camera_offset=[0,0,False]):
         self.update()
         for p in self.P:
-
             if(camera_offset[2]):
-                r.append([p.velocity,p.rot_vel,p.vision,p.prob_fail_rot])
-            
+                s =[p.velocity,p.rot_vel,p.vision,p.prob_fail_rot]
+                self.snapshot.write(str(time)+","+",".join([str(x) for x in s]) + "\n")
             p.draw(surface, camera_offset)
         for f in self.F:
             f.draw(surface, camera_offset)
         
-        return r
