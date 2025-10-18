@@ -4,7 +4,7 @@
 (I'm a freaking fan of Atari covers)
 
 
-A-Ecosystem (Artificial Ecosystem) is a digital laboratory where simple bots
+GenoPixel is a digital laboratory where simple bots
 evolve to survive. These 'robots' compete for limited resources and, upon 
 gathering enough energy, pass their genetic traits to the next generation.
 
